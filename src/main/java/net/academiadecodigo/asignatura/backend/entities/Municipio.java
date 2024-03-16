@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
@@ -43,6 +44,7 @@ public class Municipio implements Serializable {
     private List<Alumno> alumnoList;
     @JoinColumn(name = "DEPT_ID", referencedColumnName = "DEPT_ID")
     @ManyToOne(optional = false)
+    @JsonIgnore
     private Departamento deptId;
 
     public Municipio() {
