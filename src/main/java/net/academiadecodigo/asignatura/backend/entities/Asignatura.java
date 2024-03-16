@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -43,6 +45,7 @@ public class Asignatura implements Serializable {
     @ManyToMany
     private List<Profesor> profesorList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "asignatura")
+    @JsonBackReference
     private List<AlumAsig> alumAsigList;
 
     public Asignatura() {

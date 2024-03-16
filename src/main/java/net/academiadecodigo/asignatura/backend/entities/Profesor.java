@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,6 +46,7 @@ public class Profesor implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date profFechaNacimiento;
     @ManyToMany(mappedBy = "profesorList")
+    @JsonBackReference
     private List<Asignatura> asignaturaList;
 
     public Profesor() {

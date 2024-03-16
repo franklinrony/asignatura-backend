@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -53,6 +55,7 @@ public class Alumno implements Serializable {
     @ManyToOne(optional = false)
     private Municipio muniId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno")
+    @JsonBackReference
     private List<AlumAsig> alumAsigList;
 
     public Alumno() {

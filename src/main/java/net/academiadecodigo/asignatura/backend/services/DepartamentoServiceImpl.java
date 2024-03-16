@@ -32,7 +32,6 @@ private DepartamentoRepository departamentoRepository;
 
 	@Override
 	public List<Departamento> listar() throws ServiceException {
-		// TODO Auto-generated method stub
 		return departamentoRepository.findAll();
 	}
 

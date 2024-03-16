@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -25,8 +27,6 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "DEPARTAMENTO", catalog = "", schema = "ASIGNATURA")
-@NamedQueries({
-    @NamedQuery(name = "Departamento.findAll", query = "SELECT d FROM Departamento d")})
 public class Departamento implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,6 +38,7 @@ public class Departamento implements Serializable {
     @Column(name = "DEPT_NOMBRE")
     private String deptNombre;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "deptId")
+    @JsonBackReference
     private List<Municipio> municipioList;
 
     public Departamento() {
