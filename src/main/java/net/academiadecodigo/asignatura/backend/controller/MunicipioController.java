@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
+import net.academiadecodigo.asignatura.backend.dto.MunicipioDto;
 import net.academiadecodigo.asignatura.backend.entities.Municipio;
 import net.academiadecodigo.asignatura.backend.services.MunicipioService;
 
@@ -26,7 +27,7 @@ public class MunicipioController {
 		//return ResponseEntity.ok(clienteService.listar());
 		
 		try {
-			List<Municipio> municipios= municipioService.listar();
+			List<MunicipioDto> municipios= municipioService.listar();
 			if ( municipios.isEmpty() ) {
 				return ResponseEntity.noContent().build();				
 			}

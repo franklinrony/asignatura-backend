@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
-import net.academiadecodigo.asignatura.backend.entities.Departamento;
+import net.academiadecodigo.asignatura.backend.dto.DepartamentoDto;
 import net.academiadecodigo.asignatura.backend.services.DepartamentoService;
 
 @Slf4j
@@ -22,16 +22,12 @@ public class DepartamentoController {
 	@Autowired
 	private DepartamentoService departamentoService;
 	
-	public DepartamentoController() {
-		// TODO Auto-generated constructor stub
-	}
-
 	@GetMapping()
 	public ResponseEntity<?> findAll() throws ServiceException{
 		//return ResponseEntity.ok(clienteService.listar());
 		
 		try {
-			List<Departamento> departamentos= departamentoService.listar();
+			List<DepartamentoDto> departamentos= departamentoService.listar();
 			if ( departamentos.isEmpty() ) {
 				return ResponseEntity.noContent().build();				
 			}

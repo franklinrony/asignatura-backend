@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import static java.util.Objects.isNull;
 import lombok.extern.slf4j.Slf4j;
 import net.academiadecodigo.asignatura.backend.entities.Alumno;
 import net.academiadecodigo.asignatura.backend.services.AlumnoService;
@@ -31,6 +34,20 @@ public class AlumnoController {
 				return ResponseEntity.noContent().build();				
 			}
 			return  ResponseEntity.ok(alumnos);
+		} catch (Exception e) {
+			log.error(e.getMessage(),e);
+			return ResponseEntity.internalServerError().build();
+		}
+	}
+	
+	@PostMapping
+	public ResponseEntity<?> save(@RequestBody Alumno alumnoJson){
+		try {
+			Alumno alumno=alumnoService.registrar(alumnoJson);
+			if (isNull(alumno)) {
+				return ResponseEntity.badRequest().build();
+			}
+			return ResponseEntity.status(HttpStatus.CREATED).body(alumno);
 		} catch (Exception e) {
 			log.error(e.getMessage(),e);
 			return ResponseEntity.internalServerError().build();

@@ -1,7 +1,7 @@
 package net.academiadecodigo.asignatura.backend.services;
 
-import net.academiadecodigo.asignatura.backend.entities.Municipio;
+import net.academiadecodigo.asignatura.backend.dto.MunicipioDto;
 
-public interface MunicipioService extends ICRUD<Municipio> {
+public interface MunicipioService extends ICRUD<MunicipioDto> {
 
 }

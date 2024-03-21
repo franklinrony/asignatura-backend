@@ -17,8 +17,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 	
 	@Override
 	public Alumno registrar(Alumno obj) throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
+		return alumnoRepository.save(obj);
 	}
 
 	@Override

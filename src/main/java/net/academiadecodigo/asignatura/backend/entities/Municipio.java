@@ -40,11 +40,9 @@ public class Municipio implements Serializable {
     @Column(name = "MUNI_NOMBRE")
     private String muniNombre;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "muniId")
-    @JsonBackReference
     private List<Alumno> alumnoList;
     @JoinColumn(name = "DEPT_ID", referencedColumnName = "DEPT_ID")
     @ManyToOne(optional = false)
-    @JsonIgnore
     private Departamento deptId;
 
     public Municipio() {

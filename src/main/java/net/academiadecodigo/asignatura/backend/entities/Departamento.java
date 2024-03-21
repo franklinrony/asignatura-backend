@@ -8,15 +8,12 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -38,13 +35,20 @@ public class Departamento implements Serializable {
     @Column(name = "DEPT_NOMBRE")
     private String deptNombre;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "deptId")
-    @JsonBackReference
+    //@JsonBackReference
     private List<Municipio> municipioList;
 
     public Departamento() {
     }
 
-    public Departamento(BigDecimal deptId) {
+    public Departamento(BigDecimal deptId, String deptNombre, List<Municipio> municipioList) {
+		super();
+		this.deptId = deptId;
+		this.deptNombre = deptNombre;
+		this.municipioList = municipioList;
+	}
+
+	public Departamento(BigDecimal deptId) {
         this.deptId = deptId;
     }
 
