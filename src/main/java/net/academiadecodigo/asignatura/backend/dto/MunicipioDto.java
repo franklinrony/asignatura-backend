@@ -10,7 +10,6 @@ import lombok.Builder;
 public class MunicipioDto {
 	private BigDecimal muniId;
 	private String muniNombre;
-	@JsonIgnore
 	private DepartamentoDto departamento;
 	
 	
